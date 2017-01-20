@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8">
+      <title>Home</title>
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css" integrity="sha384-AysaV+vQoT3kOAXZkl02PThvDr8HYKPZhNT5h/CXfBThSRXQ6jW5DO2ekP5ViFdi" crossorigin="anonymous">
+      <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename = 'css/blog.css') }}">
+      <link rel="stylesheet" href="{{ url_for('static', filename = 'css/font-awesome-4.7.0/css/font-awesome.css') }}">
+      <script src="//cdnjs.cloudflare.com/ajax/libs/bootcards/1.0.0/js/bootcards.min.js"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+      <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+      <script src="{{ url_for('static', filename = 'js/jquery-ui.js') }}"></script>
+   </head>
+   <body>
+      <nav class="header">
+         <div class="row">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-10">
+               <div class="row">
+                  <div class="col-sm-4 bannerpic"></div>
+                  <div class="col-sm-8 navcontainer">
+                     <div class="row">
+                        <div class="col-sm-12 navsearch">
+                           <div class="input-group">
+                              <input type="text" class="form-control" placeholder="Search" />
+                              <span class="input-group-btn">
+                              <button class="btn" type="button">
+                              <span class="fa fa-search" aria-hidden="true"></span>
+                              </button>
+                              </span>
+                           </div>
+                           {% if not current_user.is_authenticated %}
+                               <a href="{{ url_for('login') }}" class="admin btn adminall" role="button">LOG IN</a>
+                           {% else %}
+                               <div class="adminall">
+                                  <strong>Welcome  {{ current_user.nickname }}!</strong><br>
+                                  <a href="{{ url_for('logout') }}" class="admin btn" role="button">LOG OUT</a>
+{#                                  {% if current_user.email == 'yunchuwangpeter@aol.com' %}#}
+{#                                      <a href="{{ url_for('compose') }}" class="btn admin composebtn" role="button">COMPOSE</a>#}
+{#                                  {% endif %}#}
+                                  <a href="{{ url_for('compose') }}" class="btn admin composebtn" role="button">COMPOSE</a>
+                               </div>
+                           {% endif %}
+
+                        </div>
+                        <div class="col-sm-12 navlist">
+                           <ul class="tablist">
+                              <li><a href="#"><strong>HOME</strong></a>
+                              </li>
+
+                              <li>
+                                  <a href="{{ url_for('blog') }}"><strong>BLOGS</strong></a>
+                              </li>
+                              {% if g.user.is_authenticated %}
+                              <li>
+                                  <a href="{{ url_for('user', nickname=g.user.nickname, page=1, scrollplace="common") }}"><strong>PROFILE</strong></a>
+                              </li>
+                              {% endif %}
+                              <li>
+                                  <a href="{{ url_for('about') }}"><strong>ABOUT</strong></a>
+                              </li>
+                              <li>
+                                  <a href="{{ url_for('contact') }}"><strong>CONTACT</strong></a>
+                              </li>
+                           </ul>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="col-sm-1"></div>
+         </div>
+      </nav>
+      <div class="container-fluid">
+          <div class="row bodycontainer">
+               <div class="col-sm-1"></div>
+               <div class="col-sm-10 fbfont">
+                  {% block content %}{% endblock %}
+               </div>
+          </div>
+      </div>
+      <script type="text/javascript" src="{{ url_for('static', filename = 'js/blog.js') }}"></script>
+      <footer class="footer">© 2017 Personal Blog . All rights reserved | Template by Bill Wang</footer>
+
+   </body>
+</html>

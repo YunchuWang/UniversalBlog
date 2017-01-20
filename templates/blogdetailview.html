@@ -1,0 +1,63 @@
+{% extends "emptycontent.html" %}
+{% block content %}
+    <div class="row detailbg">
+        <div class="col-sm-12 detailviewcomment">
+
+            <button class="btn btn-info" data-toggle="modal" data-target="#commentbox">Comment</button>
+        </div>
+        <div class="col-sm-12 detailviewtitle">
+            {{ blog.title }}
+        </div>
+        <div class="col-sm-12 detailviewbody">
+            {{ blog.body }}
+        </div>
+        {% if comments|length > 0 %}
+            <div class="col-sm-12 comment vcenter" style="font-family:Tahoma, Geneva, sans-serif;">
+                <h3 style="padding:1em;"><strong>Comments</strong></h3>
+            </div>
+        {% endif %}
+        {% for comment in comments %}
+            <div class="col-sm-12 comment">
+                <div class="card comment" >
+                   <div class="card-block" style="padding-left: .5em; padding-right: .5em;">
+                       <h5 class="card-title" style="color: seashell;">{{ comment.author.nickname }}:</h5>
+                       <p class="card-text" style="text-indent: 1em;">
+                           {{ comment.body}}
+                       </p>
+                   </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+    <div class="row">
+
+    </div>
+    <div class="modal fade" id="commentbox" tabindex="-1" role="dialog" aria-labelledby="cboxlabel" aria-hidden="true" style="margin-top:10em !important;">
+          <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="cboxlabel">
+                        Enter your comment
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="float:right;">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </h5>
+                  </div>
+                  <div class="text-center">
+                    <form action = "{{ url_for('comment', bid=blog.blog_id) }}" method="post" name="comment">
+                      {{form.hidden_tag()}}
+                      <div class="form-group">
+                        {{ form.body(cols=32, rows=6, style="width:calc(100% - 2em); height: 100%; margin:1em; margin-bottom: 0; margin-top: 1.5em; background-color: #0E0A18; color: white;") }}
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <input type="submit" class="btn btn-primary" value="Post!">
+                      </div>
+                    </form>
+                  </div>
+
+                </div>
+          </div>
+      </div>
+{% endblock %}

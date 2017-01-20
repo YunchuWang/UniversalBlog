@@ -1,0 +1,181 @@
+{% extends "emptycontent.html" %}
+{% block content %}
+
+    <div class="row">
+        <div id="common"></div>
+        {% if scroll == 'common' %}
+        <script>
+            document.getElementById('{{ scroll }}').scrollIntoView();
+            // or
+            document.location.hash = '#' + '{{ scroll }}';
+        </script>
+        {% endif %}
+        <div class="col-sm-12">
+            <div class="card nomargin">
+              <img class="card-img-top fullwidthimg" src="{{ url_for('static', filename = 'img/download.jpeg') }}" alt="Please upload your background image">
+              <div class="card-img-overlay" style="text-align:center;">
+                <img class="rounded-circle" style="border: 4px lavenderblush solid;width:10em;height:10em;position:absolute;left:calc(50% - 5em);top:8em;" src="{{ user.avatar(120) }}" alt="Please upload your profile image via Gravatar with same login email"></img>
+                <div class="profiletxt">
+                    <h5>{{ user.nickname }}</h5>
+                    <p>
+
+                        A developing ghoul developer under development
+                        {% if g.user.is_authenticated and g.user.nickname == user.nickname  %}
+                            <button class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Edit</button>
+                        {% endif %}
+                    </p>
+                </div>
+              </div>
+            </div>
+            <div class="profiletabs">
+                  <div id="mblogs"></div>
+                  <ul class="nav nav-pills">
+                      <li class="nav-item">
+                        <a class="nav-link bg-primary" data-toggle="tab" href="#blogs">Blogs</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link bg-primary" data-toggle="tab" href="#friends">Friends</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link bg-primary" data-toggle="tab" href="#comments">Comments</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link bg-primary" data-toggle="tab" href="#information">Information</a>
+                      </li>
+                  </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="tab-content">
+
+        {% if scroll == 'mblogs' %}
+            <div id="blogs" class="posts smallpad tab-pane in active">
+            <script>
+                document.getElementById('{{ scroll }}').scrollIntoView();
+                document.location.hash = '#' + '{{ scroll }}';
+            </script>
+        {% else %}
+            <div id="blogs" class="posts smallpad tab-pane in">
+        {% endif %}
+            {% for post in posts.items %}
+                <div class="card">
+                    <div class="card-block postpad">
+                        <blockquote>
+                            <h4 class="card-title text-center">{{ post.title }}</h4>
+                            <p class="card-text text-center">
+                                {{ post.body| truncate(300, True) }}
+                                <br>
+                                <a href="{{ url_for('detailview', bid=post.blog_id) }}"><span>READ MORE</span><i class="fa fa-forward" aria-hidden="true"></i></a>
+                            </p>
+                        </blockquote>
+                    </div>
+                </div>
+            {% endfor %}
+            <nav aria-label="..." class="vcenter" style="margin-bottom: 2em;">
+              <ul class="pagination">
+                {% if posts.has_prev %}
+                    <li class="page-item">
+                        <a class="page-link" href="{{ url_for('user', nickname=user.nickname, page=posts.prev_num, scrollplace='mblogs') }}">
+                            Previous
+                        </a>
+                    </li>
+                {% else %}
+                    <li class="page-item disabled">
+                        <span class="page-link">Previous</span>
+                    </li>
+                {% endif %}
+                {% for page in posts.iter_pages() %}
+                    {% if page %}
+                        {% if page != posts.page %}
+                            <li class="page-item">
+                                <a class="page-link" href="{{ url_for('user', nickname=user.nickname, page=page, scrollplace='mblogs') }}">
+                                    {{ page }}
+                                </a>
+                            </li>
+                        {% else %}
+                            <li class="page-item active">
+                                <a class="page-link" href="{{ url_for('user', nickname=user.nickname, page=page, scrollplace='mblogs') }}">
+                                    {{ page }}
+                                    <span class="sr-only">(current)</span>
+                                </a>
+                            </li>
+                        {% endif %}
+                    {% else %}
+                    <span class=ellipsis>
+                      …
+                    </span>
+                    {% endif %}
+                {% endfor %}
+                {% if posts.has_next %}
+                    <li class="page-item">
+                        <a class="page-link" href="{{ url_for('user', nickname=user.nickname, page=posts.next_num, scrollplace='mblogs') }}">
+                           Next
+                        </a>
+                    </li>
+                {% else %}
+                    <li class="page-item disabled">
+                        <span class="page-link">
+                            Next
+                        </span>
+                    </li>
+                {% endif %}
+              </ul>
+            </nav>
+
+        </div>
+        <div id="friends" class="tab-pane fade">
+        </div>
+        <div id="comments" class="tab-pane fade">
+        </div>
+        <div id="information" class="tab-pane fade">
+            {% if user.about_me %}
+                <div class="jumbotron jumbotron-fluid nobpad" style="background-color:rosybrown;color:snow;">
+                  <div class="container vcenter">
+                    <p style="text-indent: 1.5em; line-height:120%;font-size:1.5em;padding-left:1em;padding-right:1em;padding-bottom:2em;">{{ user.about_me }}</p>
+                  </div>
+                </div>
+
+            {% endif %}
+        </div>
+    </div>
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="margin-top:10em !important;">
+          <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">
+                        Edit Your Profile
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="float:right;">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </h5>
+                  </div>
+                  <div class="text-center">
+                    <form action = "/edit" method="post" name="edit">
+                      {{form.hidden_tag()}}
+                      <div class="form-group">
+                        <br>
+                        <label for="recipient-name" class="form-control-label">Nickname:</label>
+                        <br>
+                        {{ form.nickname(size=24) }}
+                        {% for error in form.errors.nickname %}
+                            <br><span style="color: red;">[{{ error }}]</span>
+                        {% endfor %}
+                      </div>
+                      <div class="form-group" id="aboutmem">
+                        <label for="message-text" class="form-control-label">About me:</label>
+                        <br>
+                        {{ form.about_me(cols=32, rows=6) }}
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <input type="submit" class="btn btn-primary" value="Done edit">
+                      </div>
+                    </form>
+                  </div>
+
+                </div>
+          </div>
+      </div>
+
+{% endblock %}

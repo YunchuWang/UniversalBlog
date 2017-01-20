@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="blogs.db">
+  <database-model serializer="dbm" rdbms="SQLITE" format-version="4.0">
+    <root id="1"/>
+    <schema id="2" parent="1">
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </schema>
+    <table id="3" parent="2" name="blog"/>
+    <table id="4" parent="2" name="category"/>
+    <table id="5" parent="2" name="comments"/>
+    <table id="6" parent="2" name="user"/>
+    <column id="7" parent="3" name="blog_id">
+      <DataType>INTEGER(0,-1)|4</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="8" parent="3" name="title">
+      <Position>1</Position>
+      <DataType>VARCHAR(80)(0,-1)|12</DataType>
+    </column>
+    <column id="9" parent="3" name="body">
+      <Position>2</Position>
+      <DataType>TEXT(0,-1)|12</DataType>
+    </column>
+    <column id="10" parent="3" name="category_id">
+      <Position>3</Position>
+      <DataType>INTEGER(0,-1)|4</DataType>
+    </column>
+    <column id="11" parent="3" name="user_id">
+      <Position>4</Position>
+      <DataType>INTEGER(0,-1)|4</DataType>
+    </column>
+    <column id="12" parent="3" name="pub_date">
+      <Position>5</Position>
+      <DataType>DATETIME(0,-1)|12</DataType>
+    </column>
+    <key id="13" parent="3">
+      <ColNames>blog_id)
+foreign key(category_id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="14" parent="3" name="#FAKE_blog_2">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>category_id</ColNames>
+      <Deferrable>1</Deferrable>
+      <InitiallyDeferred>1</InitiallyDeferred>
+      <RefTableName>category</RefTableName>
+      <RefColNames>id</RefColNames>
+      <OnDelete>no-action</OnDelete>
+      <OnUpdate>no-action</OnUpdate>
+    </foreign-key>
+    <foreign-key id="15" parent="3" name="#FAKE_blog_1">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>user_id</ColNames>
+      <Deferrable>1</Deferrable>
+      <InitiallyDeferred>1</InitiallyDeferred>
+      <RefTableName>user</RefTableName>
+      <RefColNames>id</RefColNames>
+      <OnDelete>no-action</OnDelete>
+      <OnUpdate>no-action</OnUpdate>
+    </foreign-key>
+    <column id="16" parent="4" name="id">
+      <DataType>INTEGER(0,-1)|4</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="17" parent="4" name="name">
+      <Position>1</Position>
+      <DataType>VARCHAR(60)(0,-1)|12</DataType>
+    </column>
+    <index id="18" parent="4" name="ix_category_name">
+      <ColNames>name</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="19" parent="4">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="20" parent="5" name="comment_id">
+      <DataType>INTEGER(0,-1)|4</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="21" parent="5" name="body">
+      <Position>1</Position>
+      <DataType>TEXT(0,-1)|12</DataType>
+    </column>
+    <column id="22" parent="5" name="blog_id">
+      <Position>2</Position>
+      <DataType>INTEGER(0,-1)|4</DataType>
+    </column>
+    <column id="23" parent="5" name="user_id">
+      <Position>3</Position>
+      <DataType>INTEGER(0,-1)|4</DataType>
+    </column>
+    <column id="24" parent="5" name="pub_date">
+      <Position>4</Position>
+      <DataType>DATETIME(0,-1)|12</DataType>
+    </column>
+    <key id="25" parent="5">
+      <ColNames>comment_id)
+foreign key(blog_id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="26" parent="5" name="#FAKE_comments_2">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>blog_id</ColNames>
+      <Deferrable>1</Deferrable>
+      <InitiallyDeferred>1</InitiallyDeferred>
+      <RefTableName>blog</RefTableName>
+      <RefColNames>blog_id</RefColNames>
+      <OnDelete>no-action</OnDelete>
+      <OnUpdate>no-action</OnUpdate>
+    </foreign-key>
+    <foreign-key id="27" parent="5" name="#FAKE_comments_1">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>user_id</ColNames>
+      <Deferrable>1</Deferrable>
+      <InitiallyDeferred>1</InitiallyDeferred>
+      <RefTableName>user</RefTableName>
+      <RefColNames>id</RefColNames>
+      <OnDelete>no-action</OnDelete>
+      <OnUpdate>no-action</OnUpdate>
+    </foreign-key>
+    <column id="28" parent="6" name="id">
+      <DataType>INTEGER(0,-1)|4</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="29" parent="6" name="nickname">
+      <Position>1</Position>
+      <DataType>VARCHAR(64)(0,-1)|12</DataType>
+    </column>
+    <column id="30" parent="6" name="email">
+      <Position>2</Position>
+      <DataType>VARCHAR(120)(0,-1)|12</DataType>
+    </column>
+    <index id="31" parent="6" name="ix_user_nickname">
+      <ColNames>nickname</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <index id="32" parent="6" name="ix_user_email">
+      <ColNames>email</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="33" parent="6">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+  </database-model>
+</dataSource>

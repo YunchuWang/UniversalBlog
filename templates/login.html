@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <form action="" method="post" name="login">
+      {{ form.hidden_tag() }}
+      <div class="form-group">
+          <label for="foropenid"><strong style="color:royalblue;">Sign in with your OpenID with AOL:</strong></label>
+        {{ form.openid(size=80) }}<br><br>
+        <small id="openidhelp" class="form-text">{{ form.remember_me }} Remember Me</small>
+      </div>
+      <input type="submit" class="btn btn-primary" value="Sign in">
+  </form>
+{% endblock %}

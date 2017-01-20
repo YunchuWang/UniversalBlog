@@ -1,0 +1,422 @@
+* {
+     box-sizing: border-box !important;
+     margin: 0;
+     font-family: Helvetica Neue ;
+}
+html {
+    height: 100%;
+    width: 100%;
+    max-width: 100% !important;
+    overflow-x:hidden !important;
+
+}
+body{
+    padding:0;
+    height: 100%;
+    margin:0;
+    width: 100% !important;
+}
+
+
+.container-fluid {
+    width: 100% !important;
+    background-color: navajowhite;
+    margin-top: 0;
+    margin-left:0;
+    margin-right:0;
+    padding:0;
+}
+.container:after {
+    content: "";
+    display: block;
+    height: 10em;
+}
+.bodycontainer {
+    /*min-height: 100vw !important;*/
+}
+.header {
+    height: 15em;
+    border-bottom: solid #C0C1C3 1px;
+    background-color: #CF6766;
+    -webkit-user-select: none; /* webkit (safari, chrome) browsers */
+    -moz-user-select: none; /* mozilla browsers */
+    -khtml-user-select: none; /* webkit (konqueror) browsers */
+    -ms-user-select: none; /* IE10+ */
+}
+
+
+
+.bannerpic {
+    background-image: url("../img/codemonkey.png");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    height:15em !important;
+    border-bottom: solid #C0C1C3 1px;
+
+
+}
+
+.navsearch {
+    height: 7.5em;
+    margin: 0 !important;
+    padding: 0 !important;
+    position: relative;
+}
+
+.navsearch .input-group {
+    width: 50%;
+    position: absolute;
+    bottom: 0;
+    left: 2em;
+
+}
+.navsearch .input-group input {
+    background-color: #E3E3E6;
+}
+.navsearch .input-group button {
+    background-color:#999896;
+}
+.navsearch .input-group button:hover {
+    background-color:#E9EBFE;
+}
+.navsearch button {
+    border: none;
+}
+
+.adminall {
+    position: absolute;
+    right:0;
+    bottom: 0;
+
+}
+.admin {
+    background-color: cadetblue;
+    font-weight: bold;
+    color: #FFFFFF;
+    padding: 0.8em;
+    font-size: .8em;
+    text-decoration: none !important;
+    border-radius: 25%;
+    float:right;
+    margin-top: 1em;
+}
+.adminall strong {
+    color: powderblue;
+}
+.admin:hover {
+    background-color: firebrick !important;
+    color: papayawhip ;
+}
+
+.navlist {
+    height: 7.5em;
+    margin: 0 !important;
+    padding: 0 !important;
+
+
+}
+.navlist ul {
+    padding-left: 2em;
+
+}
+.navlist ul li{
+    height: 7.5em;
+}
+.navlist ul li a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: transparent;
+    color : #FFFFFF;
+}
+strong {
+    font-size: 1.3em;
+}
+.tablist li a:hover {
+    background-color: #A62521;
+    text-decoration: inherit; /* no underline */
+    color: peachpuff !important;
+
+}
+.tablist ul li a:active {
+    background-color: transparent !important;
+}
+.tablist ul li a:visited {
+    background-color: transparent !important;
+
+}
+.tablist {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+.tablist li {
+    float: left;
+}
+.tablist li a {
+    display: block;
+    height:7.5em;
+    width: 8em;
+    text-decoration: none;
+}
+.row {
+    position: relative;
+
+}
+
+
+
+
+.footer{
+    height: 10em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #4175BA;
+    font-size: 1.4em;
+    color: #FFFFFF;
+}
+.posts .card {
+    width: 100%;
+    padding:0 !important;
+    margin:0;
+    margin-bottom: 3em;
+    border-radius: 0 !important;
+    border: none;
+}
+.posts .card-img-top {
+    width: 100%;
+    border-radius: 0;
+}
+.posts .card-title {
+    color: #55ACEE;
+}
+.posts .card-block {
+    padding-top:3em;
+    padding-bottom:1.7em;
+    padding-left: 2.5em;
+    padding-right: 2em;
+    background-color: antiquewhite;
+}
+.posts .card a {
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.posts {
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 8em;
+}
+.marks {
+    padding-top: 8em;
+    padding-left: 2.5em;
+    padding-bottom: 8em;
+}
+.posts .card-block i {
+    padding-left: .4em;
+}
+.posts .card-block a>* {
+    display: inline-block;
+    vertical-align: middle;
+}
+.marks .card {
+    margin-bottom:0;
+    text-align: center;
+}
+.marks .card-block {
+    padding: 0;
+}
+
+#recentposts,#recentcomments,#archieves,#categories {
+    background-color: lightcoral;
+    -webkit-user-select: none; /* webkit (safari, chrome) browsers */
+    -moz-user-select: none; /* mozilla browsers */
+    -khtml-user-select: none; /* webkit (konqueror) browsers */
+    -ms-user-select: none; /* IE10+ */
+}
+.sideheadstyle a {
+    text-decoration: none !important;
+    color: honeydew !important;
+
+}
+.list-group-item {
+    background-color: #FFF7C0;
+    border-color: #6C648B;
+    border-radius: 0 !important;
+}
+.marks .card {
+    border: none;
+    border-radius: 0 !important;
+}
+.marks .card-header {
+    border-radius: 0 !important;
+}
+.fullwidthimg {
+    width: 100% !important;
+    height: 25em !important;
+    border:none !important;
+    border-radius: 0 !important;
+}
+.profiletxt {
+    color: floralwhite;
+    position: relative;
+    top: 18em;
+}
+.profiletabs {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+.profiletabs ul {
+    width: 100%;
+}
+.profiletabs ul li {
+    width: 25%;
+}
+.card {
+    border-radius: 0 !important;
+    border: none !important;
+}
+.nomargin {
+    margin-bottom:0 !important;
+    padding-bottom: 0 !important;
+}
+.nav-item {
+    margin:0 !important;
+}
+.nav-link {
+    border-radius: 0 !important;
+    text-align: center;
+    color: #FFFFFF !important;
+    font-family: Lucida Grande,Tahoma;
+}
+.fbfont {
+    font-family: Lucida Grande,Tahoma;
+    /*min-height: 100vw;*/
+}
+.red {
+    background-color: red !important;
+}
+.smallpad {
+    padding: 0 !important;
+    padding-top: 3em !important;
+    margin: 0 !important;
+}
+.postpad {
+    padding: 2em !important;
+}
+.text-center {
+    text-align: center;
+}
+
+.btn-primary {
+  color: #fff;
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#feffff+0,c8e8f4+35,6dc8ed+100 */
+  background: #feffff; /* Old browsers */
+  background: -moz-linear-gradient(top,  #feffff 0%, #c8e8f4 35%, #6dc8ed 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(top,  #feffff 0%,#c8e8f4 35%,#6dc8ed 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom,  #feffff 0%,#c8e8f4 35%,#6dc8ed 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#feffff', endColorstr='#6dc8ed',GradientType=0 ); /* IE6-9 */
+  border-color: #357ebd;
+}
+
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active {
+    color: #fff;
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#f9f9f9+0,a6bddb+35,335ee0+100 */
+    background: #f9f9f9; /* Old browsers */
+    background: -moz-linear-gradient(top,  #f9f9f9 0%, #a6bddb 35%, #335ee0 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top,  #f9f9f9 0%,#a6bddb 35%,#335ee0 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom,  #f9f9f9 0%,#a6bddb 35%,#335ee0 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f9f9f9', endColorstr='#335ee0',GradientType=0 ); /* IE6-9 */
+    border-color: #285e8e;
+}
+.nobpad {
+    padding-bottom: 0 !important;
+    margin-bottom: 0 !important;
+}
+
+.vcenter {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.composebtn {
+    margin-right: 1em;
+    background-color: #4175BA;
+}
+.blogmargin {
+    margin: 3em 0em;
+}
+textarea {
+    resize: none;
+}
+
+::-webkit-input-placeholder {
+   color: gainsboro;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+   color: gainsboro;
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+   color: gainsboro;
+}
+
+:-ms-input-placeholder {
+   color: gainsboro;
+}
+#postbtn:hover{
+    background-color: brown;
+
+}
+.page-link:hover {
+    text-decoration: none!important;
+}
+.fullheight {
+    background-color: salmon;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left:0;
+
+}
+.detailviewtitle {
+    text-align: center;
+    font-size: 2.5em;
+    color: navajowhite;
+    padding-top:.5em;
+    padding-bottom: .5em;
+    background-color: #853962;
+}
+
+.detailviewbody {
+    text-align: left;
+    font-size: 1.5em;
+    color: white;
+    word-break: break-all;
+    padding-bottom: 2em;
+    padding-left: 1em;
+    padding-right: 1em;
+    background-color: #853962;
+}
+.detailbg {
+    background-color: #853962;
+}
+.detailviewcomment {
+    text-align: right;
+    padding-top: 1.2em;
+    padding-right: 1em;
+
+}
+.comment {
+    background-color: #49412c;
+    color: white;
+    border: solid 2px silver;
+    border-bottom: none;
+    width: 100% !important;
+}
